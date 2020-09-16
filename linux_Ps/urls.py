@@ -16,9 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from djangobin import views
+
 urlpatterns = [
-    url(r'^$', views.index),
-    url(r'^ls/', views.runcommand), 
-    url(r'^lsla/', views.runcommand2), 
+    url(r'^$', views.index), #The orginal index page - localhost:8000/
+    url(r'^ls/', views.runcommand), #For executing first command - localhost:8000/ls
+    url(r'^lsla/', views.runcommand2), #For executing second command - localhost:8000/lsla
     url(r'^admin/', admin.site.urls),
 ]
