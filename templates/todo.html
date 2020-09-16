@@ -1,0 +1,92 @@
+<center><h1 id="demo">PS Project</h1></center>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Output Table</h2>
+
+<table>
+  <tr>
+    <th>Commands</th>
+    <th>Output</th>
+  
+  </tr>
+  <tr>
+    <td>ls</td>
+    <td id="ls" >Initial output</td>
+  
+  </tr>
+  <tr>
+    <td>ls -la</td>
+    <td id= "lsla" >Initial output</td>
+   
+  </tr>
+ 
+</table>
+
+</body>
+</html>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+function doRunls() {
+    console.log("executed ls");
+    axios({
+    method: 'get',
+    // baseURL: window.location.origin,
+    url: 'http://127.0.0.1:8000/ls',
+
+    // responseType: 'json',
+})
+    .then(function (response) {
+       
+        document.getElementById("ls").innerHTML = response.data;
+        console.log(response);
+    })
+
+    .catch(function (error) {
+        console.log(' error=', error.message);
+    });
+}
+function doRunlsla() {
+    console.log("executed ls -la");
+    axios({
+    method: 'get',
+    // baseURL: window.location.origin,
+    url: 'http://127.0.0.1:8000/lsla',
+
+    // responseType: 'json',
+})
+    .then(function (response) {
+       
+        document.getElementById("lsla").innerHTML = response.data;
+        console.log(response);
+    })
+
+    .catch(function (error) {
+        console.log(' error=', error.message);
+    });
+}
+// doSomething();
+setInterval(doRunls, 5000);
+setInterval(doRunlsla, 5000);
+</script>
