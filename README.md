@@ -7,7 +7,9 @@ sudo yum install python-django
 
 django-admin --version
 
-Then download this project and go to this directory using terminal and run:
+yum install git
+
+Then download this project using (git clone https://github.com/muskannechlani/linux_Ps.git ) and go to this directory using terminal and run:
 
 python manage.py migrate
 
